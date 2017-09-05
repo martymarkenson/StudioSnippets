@@ -1,4 +1,4 @@
-//This function watches the value of text and depending on this value it will change the resource of the widget
+//This function watches the value of text and depending on this value changes the resource of the widget
 $scope.$watch("view.wdg[__nameOfResource__]['text']", function() {
   if($scope.view.wdg[__nameOfResource__]['text'] > 5) {
     $scope.view.wdg[__nameOfResource__]['src'] = 'app/resources/Uploaded/current_red.png';
