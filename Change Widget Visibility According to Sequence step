@@ -1,0 +1,31 @@
+$scope.showImages = function() {
+  //calls StepImages function every 250ms
+  interval = setInterval($scope.stepImages, 250);
+}
+
+$scope.stepImages = function() {
+  console.log("Current Step: "+ $scope.app.view['Home'].wdg[__nameOfWidget__]['currentStep']);
+  //replace __nameOfWidget__ with name of widget which contains sequence
+  if ($scope.app.view['Home'].wdg[__nameOfWidget__]['currentStep']==1) {
+      //shows first image and hides last image (for case that last image still up from previous play)
+      $scope.view.wdg[__nameOfWidget1__]['visible']=true;
+      $scope.view.wdg[__nameOfWidget4__['visible']=false;
+    }
+    else if ($scope.app.view['Home'].wdg[__nameOfWidget__]['currentStep']==2) {
+    //hides image from first step and shows image in second step
+      $scope.view.wdg[__nameOfWidget1__]['visible']=false;
+      $scope.view.wdg[__nameOfWidget2__]['visible']=true;
+    }
+    else if ($scope.app.view['Home'].wdg[__nameOfWidget__]['currentStep']==3) {
+    //hides image from second step and shows image in third step
+      $scope.view.wdg[__nameOfWidget2__]['visible']=false;
+      $scope.view.wdg[__nameOfWidget3__]['visible']=true;
+    }
+    else if ($scope.app.view['Home'].wdg[__nameOfWidget__]['currentStep']==4) {
+    //hides image from third step and shows image in fourth step then stop stepImages() from being called every 250ms
+      $scope.view.wdg[__nameOfWidget3__]['visible']=false;
+      $scope.view.wdg[__nameOfWidget4__]['visible']=true;
+      clearInterval(interval);
+    }
+    $scope.$applyAsync();
+}
