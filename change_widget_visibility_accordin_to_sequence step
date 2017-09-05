@@ -1,0 +1,30 @@
+$scope.showImages = function() {
+  //calls StepImages function every 250ms
+  interval = setInterval($scope.stepImages, 250);
+}
+
+$scope.stepImages = function() {
+  console.log("Current Step: "+ $scope.app.view['Home'].wdg['pipingModel']['currentStep']);
+  if ($scope.app.view['Home'].wdg['pipingModel']['currentStep']==1) {
+      //shows first image and hides last image (for case that last image still up from previous play)
+      $scope.view.wdg['step1Image']['visible']=true;
+      $scope.view.wdg['step4Image']['visible']=false;
+    }
+    else if ($scope.app.view['Home'].wdg['pipingModel']['currentStep']==2) {
+    //hides image from first step and shows image in second step
+      $scope.view.wdg['step1Image']['visible']=false;
+      $scope.view.wdg['step2Image']['visible']=true;
+    }
+    else if ($scope.app.view['Home'].wdg['pipingModel']['currentStep']==3) {
+    //hides image from second step and shows image in third step
+      $scope.view.wdg['step2Image']['visible']=false;
+      $scope.view.wdg['step3Image']['visible']=true;
+    }
+    else if ($scope.app.view['Home'].wdg['pipingModel']['currentStep']==4) {
+    //hides image from third step and shows image in fourth step then stop stepImages() from being called every 250ms
+      $scope.view.wdg['step3Image']['visible']=false;
+      $scope.view.wdg['step4Image']['visible']=true;
+      clearInterval(interval);
+    }
+    $scope.$applyAsync();
+}
