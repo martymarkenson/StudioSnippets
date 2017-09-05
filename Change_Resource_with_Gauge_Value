@@ -1,12 +1,12 @@
-//This function watches the value of text and depending on this value it will change the resource of the gauge
-$scope.$watch("view.wdg['currentGauge']['text']", function() {
-  if($scope.view.wdg['currentGauge']['text'] > 5) {
-    $scope.view.wdg['currentGauge']['src'] = 'app/resources/Uploaded/current_red.png';
+//This function watches the value of text and depending on this value it will change the resource of the widget
+$scope.$watch("view.wdg[__nameOfResource__]['text']", function() {
+  if($scope.view.wdg[__nameOfResource__]['text'] > 5) {
+    $scope.view.wdg[__nameOfResource__]['src'] = 'app/resources/Uploaded/current_red.png';
   }
-  else if($scope.view.wdg['currentGauge']['text'] > 1) {
-    $scope.view.wdg['currentGauge']['src'] = 'app/resources/Uploaded/current_green.png';
+  else if($scope.view.wdg[__nameOfResource__]['text'] > 1) {
+    $scope.view.wdg[__nameOfResource__]['src'] = 'app/resources/Uploaded/current_green.png';
   }
   else{
-    $scope.view.wdg['currentGauge']['src'] = 'app/resources/Uploaded/current_yellow.png';
+    $scope.view.wdg[__nameOfResource__]['src'] = 'app/resources/Uploaded/current_yellow.png';
   }
 });
